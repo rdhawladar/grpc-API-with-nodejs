@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package userData;
+
+// The userinfo service definition.
+service UserInfo {
+  // Sends a userinfo
+  rpc UserDetails (UserDetailsRequest) returns (UserDetailsReply) {}
+  // Sends another a userinfo
+  rpc UserDetailsAgain (UserDetailsRequest) returns (UserDetailsReply) {}
+}
+
+// The request message containing the user's name.
+message UserDetailsRequest {
+  string name = 2;
+  string age = 1;
+}
+
+// The response message containing the userinfos
+message UserDetailsReply {
+  string message = 1;
+}

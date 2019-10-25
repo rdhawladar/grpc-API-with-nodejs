@@ -23,12 +23,12 @@ There are two ways to generate the code needed to work with protocol buffers in 
 
    ```sh
    $ # from this directory
-   $ node greeter_server.js
+   $ node server.js
    ```
 
  - Run the client
 
    ```sh
    $ # from this directory
-   $ node greeter_client.js
+   $ node client.js
    ```

@@ -1,4 +1,4 @@
-var PROTO_PATH = __dirname + '/helloworld.proto';
+var PROTO_PATH = __dirname + '/userData.proto';
 
 var grpc = require('grpc');
 var protoLoader = require('@grpc/proto-loader');
@@ -10,22 +10,22 @@ var packageDefinition = protoLoader.loadSync(
      defaults: true,
      oneofs: true
     });
-var hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;
+var user_proto = grpc.loadPackageDefinition(packageDefinition).userData;
 
 function main() {
-  var client = new hello_proto.Greeter('localhost:50051',
+  var client = new user_proto.UserInfo('localhost:50051',
                                        grpc.credentials.createInsecure());
   var user;
   if (process.argv.length >= 3) {
     user = process.argv[2];
   } else {
-    user = 'world';
+    user = 'Hawladar';
   }
-  client.sayHello({name: "riad", age: "50"}, function(err, response) {
-    console.log('Greeting:', response.message);
+  client.userDetails({name: "riad", age: "50"}, function(err, response) {
+    console.log('Details:', response.message);
   });
-  client.sayHelloAgain({name: user}, function(err, response) {
-    console.log('Greeting:', response.message);
+  client.userDetailsAgain({name: user}, function(err, response) {
+    console.log('Details:', response.message);
   });
 }
 
